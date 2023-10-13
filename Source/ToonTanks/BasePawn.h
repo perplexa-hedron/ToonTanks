@@ -33,7 +33,7 @@ private:
 	class UCapsuleComponent *CapsuleComp;
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = "Components",meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* BaseMesh;
+	UStaticMeshComponent *BaseMesh;
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = "Components",meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
