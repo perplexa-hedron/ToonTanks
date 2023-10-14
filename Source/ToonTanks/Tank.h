@@ -14,6 +14,9 @@ public:
 	ATank();
 
 	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
@@ -22,5 +25,14 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent *Camera;
 
+	UPROPERTY(EditAnywhere,Category = "Movements")
+	float Speed = 200.f;
+
+	UPROPERTY(EditAnywhere,Category = "Movements")
+	float TurnRate = 20.f;
+
 	void Move(float Value);
+	void Turn(float Value);
+
+	APlayerController* PlayerControllerRef;
 };
