@@ -3,12 +3,27 @@
 
 #include "Tank.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Components/InputComponent.h"
 #include "Camera/CameraComponent.h"
+
+
 ATank::ATank()
 {
     // PrimaryActorTick.bCanEverTick = true;
-    SpringArm = CreateDefaultSubobject<USpringComponent>(TEXT("Spring Component"));
+    SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
     SpringArm->SetupAttachment(RootComponent);
-    Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA COMPONENT"));
+    Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
     Camera->SetupAttachment(SpringArm);
+}
+
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+    Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+    PlayerInputComponent->BindAxis(TEXT("MoveForward"),this,&ATank::Move);
+}
+
+void ATank::Move(float Value)
+{
+    UE_LOG(LogTemp,Warning,TEXT("Value: %f"),Value);
 }
