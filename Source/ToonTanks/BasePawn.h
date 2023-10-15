@@ -17,6 +17,9 @@ public:
 
 protected:
 	void RotateTurret(FVector LookAtTarget);
+
+	void Fire();
+	// void RotateTank(FVector LookAtTarget);
 	
 private:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = "Components",meta = (AllowPrivateAccess = "true"))
@@ -31,6 +34,6 @@ private:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = "Components",meta = (AllowPrivateAccess = "true"))
 	USceneComponent *ProjectileSpawnPoint;
 
-	// Called to bind functionality to input
-	// virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
+	UPROPERTY(EditDefaultsOnly,Category = "Combat");
+	TSubclassOf<class AProjectile> ProjectileClass;
 };
